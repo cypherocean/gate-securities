@@ -18,11 +18,11 @@
         <div class="col-lg-5 col-md-7 bg-white">
             <div class="p-3">
                 <div class="text-center">
-                    <img src="{{ _logo() }}" alt="wrapkit">
+                    <img src="{{ _logo() }}" alt="{{ _settings('SITE_TITLE') }}">
                 </div>
                 <h2 class="mt-3 text-center">Forgot password</h2>
                 <p class="text-center">Enter your email address below and we'll send you password reset instructions.</p>
-                <form id="forgot-form"  class="mt-4" action="{{ route('password.forget') }}" method="post">
+                <form id="forgot-form"  class="mt-4" action="{{ route('password.forgot') }}" method="post">
                     @csrf
                     @method('post')
                     <div class="row">
@@ -52,23 +52,4 @@
 @endsection
 
 @section('scripts')
-    <script>
-        $(function() {
-            $('#forgot-form').validate({
-                errorClass: "help-block",
-                rules: {
-                    email: {
-                        required: true,
-                        email: true
-                    },
-                },
-                highlight: function(e) {
-                    $(e).closest(".form-group").addClass("has-error")
-                },
-                unhighlight: function(e) {
-                    $(e).closest(".form-group").removeClass("has-error")
-                },
-            });
-        });
-    </script>
 @endsection

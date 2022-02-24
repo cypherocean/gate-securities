@@ -17,7 +17,6 @@
 
     @yield('styles')
 </head>
-
 <body>
     <div class="main-wrapper">
         <div class="preloader">
@@ -39,6 +38,21 @@
     </script>
 
     <script>
+        toastr.options = {
+            "progressBar": true,
+            "positionClass": "toast-bottom-left",
+            "preventDuplicates": true,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "2000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        
         @php
             $success = '';
             if(\Session::has('success'))

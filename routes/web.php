@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('command/clear', function() {
+Route::get('command:clear', function() {
     Artisan::call('cache:clear');
     Artisan::call('optimize:clear');
     Artisan::call('view:clear');
@@ -20,33 +20,33 @@ Route::get('command/clear', function() {
     return "config, cache, and view cleared successfully";
 });
 
-Route::get('command/config', function() {
+Route::get('command:config', function() {
     Artisan::call('config:cache');
     return "config cache successfully";
 });
 
-Route::get('command/key', function() {
+Route::get('command:key', function() {
     Artisan::call('key:generate');
     return "Key generate successfully";
 });
 
-Route::get('command/migrate', function() {
+Route::get('command:migrate', function() {
     Artisan::call('migrate:refresh');
     return "Database migration generated";
 });
 
-Route::get('command/seed', function() {
+Route::get('command:seed', function() {
     Artisan::call('db:seed');
     return "Database seeding generated";
 });
 
-Route::group(['middleware' => ['prevent-back-history']], function(){
+Route::group(['middleware' => ['prevent-back-history', 'mail-service']], function(){
     Route::group(['middleware' => ['guest']], function () {
         Route::get('/', 'AuthController@login')->name('login');
         Route::post('signin', 'AuthController@signin')->name('signin');
 
-        Route::get('forget-password', 'AuthController@forget_password')->name('forget.password');
-        Route::post('password-forget', 'AuthController@password_forget')->name('password.forget');
+        Route::get('forgot-password', 'AuthController@forgot_password')->name('forgot.password');
+        Route::post('password-forgot', 'AuthController@password_forgot')->name('password.forgot');
         Route::get('reset-password/{string}', 'AuthController@reset_password')->name('reset.password');
         Route::post('recover-password', 'AuthController@recover_password')->name('recover.password');
     });

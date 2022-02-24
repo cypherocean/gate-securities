@@ -4,7 +4,7 @@
 @endsection
 
 @section('title')
-    Role Create
+    Role Insert
 @endsection
 
 @section('styles')
@@ -19,8 +19,8 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb m-0 p-0">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="text-muted">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('role') }}" class="text-muted">Role</a></li>
-                        <li class="breadcrumb-item text-muted active" aria-current="page">Create</li>
+                        <li class="breadcrumb-item"><a href="{{ route('role') }}" class="text-muted">Roles</a></li>
+                        <li class="breadcrumb-item text-muted active" aria-current="page">Insert</li>
                     </ol>
                 </nav>
             </div>

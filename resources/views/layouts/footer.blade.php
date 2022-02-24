@@ -1,3 +1,3 @@
 <footer class="footer text-center text-muted">
-    All Rights Reserved by <a href="https://www.cypherocean.com" target="_blank">Cypher Ocean</a>.
+    All Rights Reserved by <a href="https://www.kriptontech.com" target="_blank">Kripton Tech</a>.
 </footer>

@@ -18,7 +18,7 @@
             <div class="col-lg-5 col-md-7 bg-white">
                 <div class="p-3">
                     <div class="text-center">
-                        <img src="{{ _logo() }}" alt="wrapkit">
+                        <img src="{{ _logo() }}" alt="{{ _settings('SITE_TITLE') }}">
                     </div>
                     <h2 class="mt-3 text-center">Sign In</h2>
                     <p class="text-center">Enter your email address or phone no. and password to access panel.</p>
@@ -52,10 +52,7 @@
                                 <button type="submit" class="btn btn-block btn-dark">Sign In</button>
                             </div>
                             <div class="col-lg-12 text-center mt-2">
-                                <a href="{{ route('forget.password') }}" class="text-danger">Forget Password</a>
-                            </div>
-                            <div class="col-lg-12 text-center mt-2">
-                                Don't have an account? <a href="#" class="text-danger">Sign Up</a>
+                                <a href="{{ route('forgot.password') }}" class="text-danger">Forget Password</a>
                             </div>
                         </div>
                     </form>

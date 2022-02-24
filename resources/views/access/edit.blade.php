@@ -4,7 +4,7 @@
 @endsection
 
 @section('title')
-    Access Edit
+    Access Update
 @endsection
 
 @section('styles')
@@ -20,7 +20,7 @@
                     <ol class="breadcrumb m-0 p-0">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="text-muted">Dashboard</a></li>
                         <li class="breadcrumb-item"><a href="{{ route('access') }}" class="text-muted">Access</a></li>
-                        <li class="breadcrumb-item text-muted active" aria-current="page">Edit</li>
+                        <li class="breadcrumb-item text-muted active" aria-current="page">Update</li>
                     </ol>
                 </nav>
             </div>

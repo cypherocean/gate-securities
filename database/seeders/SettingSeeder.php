@@ -15,8 +15,8 @@ class SettingSeeder extends Seeder{
             'MAIN_CONTACT_NUMBER' => '+91-9898000002',
             'CONTACT_EMAIL' => 'info@gatesecurities.com',
             'MAIN_CONTACT_EMAIL' => 'info@gatesecurities.com',
-            'CONTACT_ADDRESS' => '<strong>Registered Address:-</strong> Plot No:22, Gulmohar Co.Op,So Ltd, Shimpoli Road, Borivali(West), Mumbai-400092',
-            'MAIN_CONTACT_ADDRESS' => '<strong>Branch/Courier Address:-</strong> D-1402 Sun South Park, South Bopal, Ahmedabad-38008'
+            'CONTACT_ADDRESS' => 'Plot No:22, Gulmohar Co.Op,So Ltd, Shimpoli Road, Borivali(West), Mumbai-400092',
+            'MAIN_CONTACT_ADDRESS' => 'Branch/Courier Address:- D-1402 Sun South Park, South Bopal, Ahmedabad-38008'
         ];
 
         foreach($general as $key => $value){
@@ -32,13 +32,14 @@ class SettingSeeder extends Seeder{
         }
 
         $smtp = [
-            'MAIL_DRIVER' => 'smtp', 
-            'MAIL_HOST' => 'mail.gatesecurities.com', 
-            'MAIL_PORT' => '465',
-            'MAIL_USERNAME' => 'info@gatesecurities.com',
-            'MAIL_PASSWORD' => 'Admin@123',
-            'MAIL_ENCRYPTION' => 'ssl',
-            'MAIL_FROM_NAME' => 'Gate Securities'
+            'MAIL_MAILER' => 'smtp',
+            'MAIL_HOST' => 'mail.kriptontech.com',
+            'MAIL_PORT' => '26',
+            'MAIL_USERNAME' => 'test@kriptontech.com',
+            'MAIL_PASSWORD' => 'Test@kriptontech123',
+            'MAIL_ENCRYPTION' => 'tls',
+            'MAIL_FROM_ADDRESS' => 'test@kriptontech.com',
+            'MAIL_FROM_NAME' => 'Kripton Tech'
         ];
 
         foreach($smtp as $key => $value){

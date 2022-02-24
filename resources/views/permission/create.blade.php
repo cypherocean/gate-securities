@@ -4,7 +4,7 @@
 @endsection
 
 @section('title')
-    Permission Create
+    Permission Insert
 @endsection
 
 @section('styles')
@@ -14,13 +14,13 @@
 <div class="page-breadcrumb">
     <div class="row">
         <div class="col-7 align-self-center">
-            <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Roles</h4>
+            <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Permissions</h4>
             <div class="d-flex align-items-center">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb m-0 p-0">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="text-muted">Dashboard</a></li>
                         <li class="breadcrumb-item"><a href="{{ route('permission') }}" class="text-muted">Permissions</a></li>
-                        <li class="breadcrumb-item text-muted active" aria-current="page">Create</li>
+                        <li class="breadcrumb-item text-muted active" aria-current="page">Insert</li>
                     </ol>
                 </nav>
             </div>

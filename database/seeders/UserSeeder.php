@@ -11,20 +11,74 @@ use Illuminate\Support\Facades\File;
 class UserSeeder extends Seeder{
 
     public function run(){
-        $admin = User::create([
-            'name' => 'Super Admin',
-            'phone' => '1234567890',
-            'email' => 'superadmin@mail.com',
-            'password' => bcrypt('Admin@123'),
-            'photo' => 'user-icon.jpg',
-            'status' => 'active',
-            'created_at' => date('Y-m-d H:i:s'),
-            'created_by' => 1,
-            'updated_at' => date('Y-m-d H:i:s'),
-            'updated_by' => 1
-        ]);
+        $data = [
+            [
+                'name' => 'Super Admin',
+                'phone' => '9898989800',
+                'email' => 'admin@kriptontech.com',
+                'role' => 'admin'
+            ],
+            [
+                'name' => 'Gajjar Mitul',
+                'phone' => '8200242382',
+                'email' => 'mitul@kriptontech.com',
+                'role' => 'society'
+            ],
+            [
+                'name' => 'Mustan Sir',
+                'phone' => '8160553161',
+                'email' => 'mustan@kriptontech.com',
+                'role' => 'apartment_owner'
+            ],
+            [
+                'name' => 'HardIk Patel',
+                'phone' => '8000080272',
+                'email' => 'hardik@kriptontech.com',
+                'role' => 'security'
+            ],
+            [
+                'name' => 'Pankaj Patel',
+                'phone' => '9898989801',
+                'email' => 'pankaj@kriptontech.com',
+                'role' => 'agency'
+            ],
+            [
+                'name' => 'Anil Patel',
+                'phone' => '9898989802',
+                'email' => 'anil@kriptontech.com',
+                'role' => 'guest'
+            ],
+            [
+                'name' => 'Kiran Patel',
+                'phone' => '9898989803',
+                'email' => 'kiran@kriptontech.com',
+                'role' => 'daily_help'
+            ],
+            [
+                'name' => 'Nitish Patel',
+                'phone' => '9898989804',
+                'email' => 'nitish@kriptontech.com',
+                'role' => 'tenant'
+            ],
+        ];
+        
+        foreach($data as $row){
+            $user = User::create([
+                'name' => $row['name'],
+                'phone' => $row['phone'],
+                'email' => $row['email'],
+                'password' => bcrypt('Admin@123'),
+                'photo' => 'user-icon.jpg',
+                'status' => 'active',
+                'created_at' => date('Y-m-d H:i:s'),
+                'created_by' => 1,
+                'updated_at' => date('Y-m-d H:i:s'),
+                'updated_by' => 1
+            ]);        
 
-        $admin->assignRole(Role::findByName('admin'));
+            $user->assignRole(Role::findByName($row['role']));
+        }
+
 
         $file_to_upload = public_path().'/uploads/users/';
         if (!File::exists($file_to_upload))

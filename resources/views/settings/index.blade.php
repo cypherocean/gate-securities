@@ -4,7 +4,7 @@
 @endsection
 
 @section('title')
-Settings
+    Settings
 @endsection
 
 @section('styles')
@@ -14,10 +14,10 @@ Settings
 
 @section('content')
 @php
-$tab = 'general';
+    $tab = 'general';
 
-if(\Session::has('tab'))
-$tab = \Session::get('tab');
+    if(\Session::has('tab'))
+    $tab = \Session::get('tab');
 @endphp
 <div class="page-breadcrumb">
     <div class="row">
