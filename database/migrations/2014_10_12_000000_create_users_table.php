@@ -14,7 +14,7 @@ class CreateUsersTable extends Migration{
             $table->string('photo')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
-            $table->enum('status', ['active', 'inactive', 'deleted'])->default('inactive');
+            $table->enum('status', ['active', 'inactive'])->default('inactive');
             $table->rememberToken();
             $table->timestamps();
             $table->integer('created_by')->nullable();

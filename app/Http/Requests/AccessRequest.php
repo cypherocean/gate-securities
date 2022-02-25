@@ -21,7 +21,7 @@ class AccessRequest extends FormRequest{
     public function messages(){
         return [
             'role.required' => 'Please select role',
-            'permissions.required' => 'Please select one permission atleast',
+            'permissions.required' => 'Please select one permission atleast'
         ];
     }
 }

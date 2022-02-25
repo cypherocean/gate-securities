@@ -21,7 +21,7 @@ class RoleController extends Controller{
     /** index */
         public function index(Request $request){
             if($request->ajax()){
-                $data = Role::select('id', 'name', 'guard_name')->get();
+                $data = Role::select('id', 'name', 'guard_name')->orderBy('id', 'desc')->get();
 
                 return Datatables::of($data)
                         ->addIndexColumn()
@@ -85,9 +85,9 @@ class RoleController extends Controller{
             if($role){
                 $role->syncPermissions($request->permissions);
 
-                return redirect()->route('role')->with('success', 'Role inserted successfully.');
+                return redirect()->route('role')->with('success', 'Record inserted successfully');
             }else{
-                return redirect()->back()->with('error', 'Failed to insert record.')->withInput();
+                return redirect()->back()->with('error', 'Failed to insert record')->withInput();
             }
         }
     /** insert */
@@ -97,7 +97,7 @@ class RoleController extends Controller{
             if(isset($request->id) && $request->id != '' && $request->id != null)
                 $id = base64_decode($request->id);
             else
-                return redirect()->route('role')->with('error', 'Something went wrong.');
+                return redirect()->route('role')->with('error', 'Something went wrong');
 
             $data = Role::find($id);
             $permissions = Permission::get();
@@ -121,9 +121,9 @@ class RoleController extends Controller{
             if($role->save()){
                 $role->syncPermissions($request->permissions);
 
-                return redirect()->route('role')->with('success', 'Role updated successfully.');
+                return redirect()->route('role')->with('success', 'Record updated successfully');
             }else{
-                return redirect()->back()->with('error', 'Failed to update record.')->withInput();
+                return redirect()->back()->with('error', 'Failed to update record')->withInput();
             }
         }
     /** update */
@@ -133,7 +133,7 @@ class RoleController extends Controller{
             if(isset($request->id) && $request->id != '' && $request->id != null)
                 $id = base64_decode($request->id);
             else
-                return redirect()->route('role')->with('error', 'Something went wrong.');
+                return redirect()->route('role')->with('error', 'Something went wrong');
 
             $data = Role::find($id);
             $permissions = Permission::get();

@@ -76,9 +76,11 @@
                 $.ajax({
                     url : form.attr('action'),
                     type : form.attr('method'),
-                    data : form.serialize(),
+                    data: new FormData($(this)[0]),
                     dataType: 'json',
-                    async:false,
+                    async: false,
+                    processData: false,
+                    contentType: false,
                     success : function(json){
                         return true;
                     },

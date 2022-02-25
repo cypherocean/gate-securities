@@ -19,7 +19,7 @@ class AccessController extends Controller{
     /** index */
         public function index(Request $request){
             if($request->ajax()){
-                $data = Role::select('id', 'name')->get();
+                $data = Role::select('id', 'name')->orderBy('id', 'desc')->get();
 
                 return Datatables::of($data)
                         ->addIndexColumn()
@@ -64,7 +64,7 @@ class AccessController extends Controller{
             if(isset($request->id) && $request->id != '' && $request->id != null)
                 $id = base64_decode($request->id);
             else
-                return redirect()->route('access')->with('error', 'Something went wrong.');
+                return redirect()->route('access')->with('error', 'Something went wrong');
 
             $permissions = Permission::select('id', 'name')->get();
             $roles = Role::select('id', 'name')->get();
@@ -84,11 +84,10 @@ class AccessController extends Controller{
 
             $role = Role::find($request->role);
             
-            if($role->permissions()->sync($permissions)){
-                return redirect()->route('access')->with('success', 'Access updated successfully.');
-            }else{
-                return redirect()->back()->with('error', 'Failed to update record.')->withInput();
-            }
+            if($role->permissions()->sync($permissions))
+                return redirect()->route('access')->with('success', 'Record updated successfully');
+            else
+                return redirect()->back()->with('error', 'Failed to update record')->withInput();
         }
     /** update */
 
@@ -97,7 +96,7 @@ class AccessController extends Controller{
             if(isset($request->id) && $request->id != '' && $request->id != null)
                 $id = base64_decode($request->id);
             else
-                return redirect()->route('access')->with('error', 'Something went wrong.');
+                return redirect()->route('access')->with('error', 'Something went wrong');
 
             $permissions = Permission::select('id', 'name')->get();
             $roles = Role::select('id', 'name')->get();

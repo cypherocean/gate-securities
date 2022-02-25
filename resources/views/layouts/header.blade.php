@@ -116,7 +116,12 @@
                 </li> -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="{{ asset('uploads/users').'/'.auth()->user()->photo }}" alt="user" class="rounded-circle" width="40">
+                        @php
+                            $image = 'user-icon.jpg';
+                            if(auth()->user()->photo != '')
+                                $image = auth()->user()->photo;
+                        @endphp
+                        <img src="{{ asset('uploads/users').'/'.$image }}" alt="user" class="rounded-circle" width="40">
                         <span class="ml-2 d-none d-lg-inline-block">
                             <span>Hello,</span> 
                             <span class="text-dark">{{ auth()->user()->name }}</span> 
@@ -124,7 +129,7 @@
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
-                        <a class="dropdown-item" href="javascript:void(0)"><i data-feather="user" class="svg-icon mr-2 ml-1"></i> My Profile</a>
+                        <a class="dropdown-item" href="{{ route('profile') }}"><i data-feather="user" class="svg-icon mr-2 ml-1"></i> My Profile</a>
                         <!-- <a class="dropdown-item" href="javascript:void(0)"><i data-feather="mail" class="svg-icon mr-2 ml-1"></i> Inbox</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="javascript:void(0)"><i data-feather="settings" class="svg-icon mr-2 ml-1"></i> Account Setting</a>

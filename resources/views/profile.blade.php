@@ -4,7 +4,7 @@
 @endsection
 
 @section('title')
-    User Insert
+    Profile Update
 @endsection
 
 @section('styles')
@@ -16,13 +16,13 @@
 <div class="page-breadcrumb">
     <div class="row">
         <div class="col-7 align-self-center">
-            <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Users</h4>
+            <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Profile</h4>
             <div class="d-flex align-items-center">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb m-0 p-0">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="text-muted">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('user') }}" class="text-muted">Users</a></li>
-                        <li class="breadcrumb-item text-muted active" aria-current="page">Insert</li>
+                        <li class="breadcrumb-item"><a href="{{ route('profile') }}" class="text-muted">Profile</a></li>
+                        <li class="breadcrumb-item text-muted active" aria-current="page">Update</li>
                     </ol>
                 </nav>
             </div>
@@ -31,56 +31,62 @@
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12">
+        <div class="col-6">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('user.insert') }}" name="form" id="form" method="post" enctype="multipart/form-data">
+                    <div class="d-flex justify-content-center align-items-center mb-3">
+                        @php
+                            $image = 'user-icon.jpg';
+                            if(auth()->user()->photo != '')
+                                $image = auth()->user()->photo;
+                        @endphp
+                        <img src="{{ asset('uploads/users').'/'.$image }}" style="height: 150px; width: 150px;" alt="Profile Picture" class="rounded-circle">
+                    </div>
+                    <h4 class="d-flex justify-content-center card-title mb-3">{{ auth()->user()->name }}</h4>
+                    <h4 class="d-flex justify-content-center card-title mb-3">{{ auth()->user()->phone }}</h4>
+                    <h4 class="d-flex justify-content-center card-title mb-3">{{ auth()->user()->email }}</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <form action="{{ route('profile.update') }}" name="form" id="form" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('POST')
 
+                        <input type="hidden" name="id" value="{{ $data->id }}">
+
                         <div class="row">
-                            <div class="form-group col-sm-6">
+                            <div class="form-group col-sm-12">
                                 <label for="name">Name</label>
-                                <input type="text" name="name" id="name" class="form-control" placeholder="Plese enter name" value="{{ @old('name') }}">
+                                <input type="text" name="name" id="name" class="form-control" placeholder="Plese enter name" value="{{ @old('name', $data->name) }}">
                                 <span class="kt-form__help error name"></span>
                             </div>
-                            <div class="form-group col-sm-6">
+                            <div class="form-group col-sm-12">
                                 <label for="phone">Phone</label>
-                                <input type="text" name="phone" id="phone" class="form-control" placeholder="Plese enter phone" value="{{ @old('phone') }}">
+                                <input type="text" name="phone" id="phone" class="form-control" placeholder="Plese enter phone" value="{{ @old('phone', $data->phone) }}">
                                 <span class="kt-form__help error phone"></span>
                             </div>
-                            <div class="form-group col-sm-6">
+                            <div class="form-group col-sm-12">
                                 <label for="email">Email</label>
-                                <input type="email" name="email" class="form-control" placeholder="Plese enter email" value="{{ @old('email') }}">
+                                <input type="email" name="email" class="form-control" placeholder="Plese enter email" value="{{ @old('email', $data->email) }}">
                                 <span class="kt-form__help error email"></span>
                             </div>
-                            <div class="form-group col-sm-6">
+                            <div class="form-group col-sm-12">
                                 <label for="password">Password</label>
                                 <input type="password" name="password" class="form-control" placeholder="Plese enter password">
                                 <span class="text-danger">* Leave blank for default password</span>
                                 <span class="kt-form__help error password"></span>
                             </div>
-                            <div class="form-group col-sm-6">
-                                <label for="role" name="role" placeholder="Plese select role">Role</label>
-                                <select class="form-control" name="role" id="role">
-                                    <option value="">Select role</option>
-                                    @if(isset($roles) && $roles->isNotEmpty())
-                                        @foreach($roles as $role)
-                                            <option value="{{ $role->id }}">{{ ucfirst(str_replace('_', ' ', $role->name)) }}</option>
-                                        @endforeach
-                                    @endif
-                                </select>
-                                <span class="kt-form__help error role"></span>
-                            </div>
                             <div class="form-group col-sm-12">
                                 <label for="photo">Profile Image</label>
-                                <input type="file" class="form-control dropify" id="photo" name="photo" data-allowed-file-extensions="jpg png jpeg" data-max-file-size-preview="2M">
+                                <input type="file" class="form-control dropify" id="photo" name="photo" data-default-file="{{ $data->photo ??'' }}" data-allowed-file-extensions="jpg png jpeg" data-max-file-size-preview="2M">
                                 <span class="kt-form__help error photo"></span>
                             </div>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn waves-effect waves-light btn-rounded btn-outline-primary">Submit</button>
-                            <a href="{{ route('user') }}" class="btn waves-effect waves-light btn-rounded btn-outline-secondary">Cancel</a>
                         </div>
                     </form>
                 </div>

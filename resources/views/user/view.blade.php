@@ -8,8 +8,7 @@
 @endsection
 
 @section('styles')
-    <link href="{{ asset('assets/css/dropify.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/sweetalert2.bundle.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/css/dropify.min.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -64,9 +63,9 @@
                                 <span class="kt-form__help error role"></span>
                             </div>
                             <div class="form-group col-sm-12">
-                                <label for="profile">Profile Image</label>
-                                <input type="file" class="dropify" id="profile" data-default-file="{{ $data->photo ??'' }}" name="profile" data-allowed-file-extensions="jpg png jpeg" data-max-file-size-preview="2M" disabled>
-                                <span class="kt-form__help error profile"></span>
+                                <label for="photo">Profile Image</label>
+                                <input type="file" class="dropify" id="photo" data-default-file="{{ $data->photo ??'' }}" name="photo" data-allowed-file-extensions="jpg png jpeg" data-max-file-size-preview="2M" disabled>
+                                <span class="kt-form__help error photo"></span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -81,88 +80,12 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('assets/js/dropify.min.js') }}"></script>
-    <script src="{{ asset('assets/js/promise.min.js') }}"></script>
-    <script src="{{ asset('assets/js/sweetalert2.bundle.js') }}"></script>
+<script src="{{ asset('assets/js/dropify.min.js') }}"></script>
 
-    <script>
-        $(document).ready(function(){
-            var drEvent = $('.dropify').dropify();
-
-            var dropifyElements = {};
-            $('.dropify').each(function () {
-                dropifyElements[this.id] = false;
-            });
-
-            drEvent.on('dropify.beforeClear', function(event, element){
-                id = event.target.id;
-                if(!dropifyElements[id]){
-                    var url = "{!! route('user.profile.remove') !!}";
-                    <?php if(isset($data) && isset($data->id)){ ?>
-                        var id_encoded = "{{ base64_encode($data->id) }}";
-
-                        Swal.fire({
-                            title: 'Are you sure want delete this image?',
-                            text: "",
-                            type: 'warning',
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
-                            confirmButtonText: 'Yes'
-                        }).then(function (result){
-                            if (result.value){
-                                $.ajax({
-                                    url: url,
-                                    type: "POST",
-                                    data:{
-                                        id: id_encoded,
-                                        _token: "{{ csrf_token() }}"
-                                    },
-                                    dataType: "JSON",
-                                    success: function (data){
-                                        if(data.code == 200){
-                                            Swal.fire('Deleted!', 'Deleted Successfully.', 'success');
-                                            dropifyElements[id] = true;
-                                            element.clearElement();
-                                        }else{
-                                            Swal.fire('', 'Failed to delete', 'error');
-                                        }
-                                    },
-                                    error: function (jqXHR, textStatus, errorThrown){
-                                        Swal.fire('', 'Failed to delete', 'error');
-                                    }
-                                });
-                            }
-                        });
-
-                        return false;
-                    <?php } else { ?>
-                        Swal.fire({
-                            title: 'Are you sure want delete this image?',
-                            text: "",
-                            type: 'warning',
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
-                            confirmButtonText: 'Yes'
-                        }).then(function (result){
-                            if (result.value){
-                                Swal.fire('Deleted!', 'Deleted Successfully.', 'success');
-                                dropifyElements[id] = true;
-                                element.clearElement();
-                            }else{
-                                Swal.fire('Cancelled', 'Discard Last Operation.', 'error');
-                            }
-                        });
-                        return false;
-                    <?php } ?>
-                } else {
-                    dropifyElements[id] = false;
-                    return true;
-                }
-            });
-        });
-    </script>
-
+<script>
+    $(document).ready(function(){
+        var drEvent = $('.dropify').dropify();
+    });
+</script>
 @endsection
 

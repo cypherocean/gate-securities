@@ -101,6 +101,11 @@ Route::group(['middleware' => ['prevent-back-history', 'mail-service']], functio
             Route::post('settings/update', 'SettingsController@update')->name('settings.update');
             Route::post('settings/update/logo', 'SettingsController@logo_update')->name('settings.update.logo');
         /** settings */
+
+        /** profile */
+            Route::get('profile', 'DashboardController@profile')->name('profile');
+            Route::post('profile-update', 'DashboardController@profile_update')->name('profile.update');
+        /** profile */
     });
 
     Route::get("{path}", function(){ return view('404'); })->where('path', '.+');

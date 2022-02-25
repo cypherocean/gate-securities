@@ -144,9 +144,9 @@ Users
                         success: function(response) {
                             if (response.code == 200) {
                                 datatable.ajax.reload();
-                                toastr.success('Record status changed successfully.', 'Success');
+                                toastr.success('Status changed successfully', 'Success');
                             } else {
-                                toastr.error('Failed to delete record.', 'Error');
+                                toastr.error('Failed to change status', 'Error');
                             }
                         }
                     });

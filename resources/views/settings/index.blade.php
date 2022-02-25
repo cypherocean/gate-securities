@@ -4,7 +4,7 @@
 @endsection
 
 @section('title')
-    Settings
+Settings
 @endsection
 
 @section('styles')
@@ -14,10 +14,10 @@
 
 @section('content')
 @php
-    $tab = 'general';
+$tab = 'general';
 
-    if(\Session::has('tab'))
-    $tab = \Session::get('tab');
+if(\Session::has('tab'))
+$tab = \Session::get('tab');
 @endphp
 <div class="page-breadcrumb">
     <div class="row">
@@ -34,8 +34,7 @@
             </div>
         </div>
         <div class="col-5 align-self-center">
-            <div class="customize-input float-right">
-            </div>
+            <div class="customize-input float-right"></div>
         </div>
     </div>
 </div>
@@ -76,7 +75,7 @@
                                         </div>
                                         @endforeach
                                     @endif
-                                    <input type="submit" value="Save" class="btn waves-effect waves-light btn-rounded btn-outline-primary mb-3">
+                                    <input type="submit" value="Save" class="btn waves-effect waves-light btn-rounded btn-outline-primary mb-3 ml-3">
                                 </div>
                             </form>
                         </div>
@@ -93,10 +92,8 @@
                                             <input type="text" name="{{ $row->id }}" class="form-control" value="{{ $row->value }}" placeholder="{{ strtoupper(str_replace('_', ' ', $row->key)) }}" />
                                         </div>
                                         @endforeach
-                                        <div class="form-group col-sm-6">
-                                        </div>
                                     @endif
-                                    <input type="submit" value="Save" class="btn waves-effect waves-light btn-rounded btn-outline-primary mb-3">
+                                    <input type="submit" value="Save" class="btn waves-effect waves-light btn-rounded btn-outline-primary mb-3 ml-3">
                                 </div>
                             </form>
                         </div>
@@ -114,7 +111,7 @@
                                         </div>
                                         @endforeach
                                     @endif
-                                    <input type="submit" value="Save" class="btn waves-effect waves-light btn-rounded btn-outline-primary mb-3">
+                                    <input type="submit" value="Save" class="btn waves-effect waves-light btn-rounded btn-outline-primary mb-3 ml-3">
                                 </div>
                             </form>
                         </div>
@@ -132,7 +129,7 @@
                                         </div>
                                         @endforeach
                                     @endif
-                                    <input type="submit" value="Save" class="btn waves-effect waves-light btn-rounded btn-outline-primary mb-3">
+                                    <input type="submit" value="Save" class="btn waves-effect waves-light btn-rounded btn-outline-primary mb-3 ml-3">
                                 </div>
                             </form>
                         </div>
@@ -151,7 +148,7 @@
                                         </div>
                                         @endforeach
                                     @endif
-                                    <input type="submit" value="Save" class="btn waves-effect waves-light btn-rounded btn-outline-primary mb-3">
+                                    <input type="submit" value="Save" class="btn waves-effect waves-light btn-rounded btn-outline-primary mb-3 ml-3">
                                 </div>
                             </form>
                         </div>
@@ -160,24 +157,25 @@
             </div>
         </div>
     </div>
-    @endsection
+</div>
+@endsection
 
-    @section('scripts')
-    <script src="{{ asset('assets/js/dropify.min.js') }}"></script>
-    <script src="{{ asset('assets/js/promise.min.js') }}"></script>
-    <script src="{{ asset('assets/js/sweetalert2.bundle.js') }}"></script>
+@section('scripts')
+<script src="{{ asset('assets/js/dropify.min.js') }}"></script>
+<script src="{{ asset('assets/js/promise.min.js') }}"></script>
+<script src="{{ asset('assets/js/sweetalert2.bundle.js') }}"></script>
 
-    <script>
-        $(document).ready(function() {
-            $('.dropify').dropify({
-                messages: {
-                    'default': 'Drag and drop profile image here or click',
-                    'remove': 'Remove',
-                    'error': 'Ooops, something wrong happended.'
-                }
-            });
-
-            var drEvent = $('.dropify').dropify();
+<script>
+    $(document).ready(function() {
+        $('.dropify').dropify({
+            messages: {
+                'default': 'Drag and drop profile image here or click',
+                'remove': 'Remove',
+                'error': 'Ooops, something wrong happended.'
+            }
         });
-    </script>
-    @endsection
+
+        var drEvent = $('.dropify').dropify();
+    });
+</script>
+@endsection

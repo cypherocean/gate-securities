@@ -18,10 +18,10 @@ class PermissionController extends Controller{
         }
     /** construct */
 
-    /** insert */
+    /** index */
         public function index(Request $request){
             if($request->ajax()){
-                $data = Permission::select('id', 'name', 'guard_name')->get();
+                $data = Permission::select('id', 'name', 'guard_name')->orderBy('id', 'desc')->get();
 
                 return Datatables::of($data)
                         ->addIndexColumn()
@@ -56,7 +56,7 @@ class PermissionController extends Controller{
 
             return view('permission.index');
         }
-    /** insert */
+    /** index */
 
     /** create */
         public function create(Request $request){
@@ -78,9 +78,9 @@ class PermissionController extends Controller{
             $last_id = Permission::insertGetId($curd);
 
             if($last_id > 0)
-                return redirect()->route('permission')->with('success', 'Permission inserted successfully.');
+                return redirect()->route('permission')->with('success', 'Record inserted successfully');
             else
-                return redirect()->back()->with('error', 'Failed to insert record.')->withInput();
+                return redirect()->back()->with('error', 'Failed to insert record')->withInput();
         }
     /** insert */
 
@@ -89,7 +89,7 @@ class PermissionController extends Controller{
             if(isset($request->id) && $request->id != '' && $request->id != null)
                 $id = base64_decode($request->id);
             else
-                return redirect()->route('permission')->with('error', 'Something went wrong.');
+                return redirect()->route('permission')->with('error', 'Something went wrong');
 
             $data = Permission::find($id);
 
@@ -110,9 +110,9 @@ class PermissionController extends Controller{
             $update = Permission::where(['id' => $request->id])->update($curd);
 
             if($update)
-                return redirect()->route('permission')->with('success', 'Permission updated successfully.');
+                return redirect()->route('permission')->with('success', 'Record updated successfully');
             else
-                return redirect()->back()->with('error', 'Failed to update record.')->withInput();
+                return redirect()->back()->with('error', 'Failed to update record')->withInput();
         }
     /** update */
 
@@ -121,7 +121,7 @@ class PermissionController extends Controller{
             if(isset($request->id) && $request->id != '' && $request->id != null)
                 $id = base64_decode($request->id);
             else
-                return redirect()->route('permission')->with('error', 'Something went wrong.');
+                return redirect()->route('permission')->with('error', 'Something went wrong');
 
             $data = Permission::find($id);
 

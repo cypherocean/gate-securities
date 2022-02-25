@@ -133,9 +133,9 @@
                     success: function (response){
                         if (response.code == 200){
                             datatable.ajax.reload();
-                            toastr.success('Record deleted successfully.', 'Success');
+                            toastr.success('Status chagned successfully', 'Success');
                         }else{
-                            toastr.error('Failed to delete record.', 'Error');
+                            toastr.error('Failed to change status', 'Error');
                         }
                     }
                 });

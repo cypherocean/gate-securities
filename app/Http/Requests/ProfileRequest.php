@@ -4,25 +4,17 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserRequest extends FormRequest{
+class ProfileRequest extends FormRequest{
     public function authorize(){
         return true;
     }
 
     public function rules(){
-        if($this->method() == 'PATCH'){
+        if($this->method() == 'POST'){
             return [
                 'name' => 'required|regex:/^[\pL\s\-]+$/u|max:255',
                 'email' => 'required|email|unique:users,email,'.$this->id,
-                'phone' => 'required|digits:10|unique:users,phone,'.$this->id,
-                'role' => 'required'
-            ];
-        }else{
-            return [
-                'name' => 'required|regex:/^[\pL\s\-]+$/u|max:255',
-                'email' => 'required|email|unique:users,email',
-                'phone' => 'required|digits:10|unique:users,phone',
-                'role' => 'required'
+                'phone' => 'required|digits:10|unique:users,phone,'.$this->id
             ];
         }
     }
@@ -37,8 +29,7 @@ class UserRequest extends FormRequest{
             'email.unique' => 'Please enter unique email',
             'phone.required' => 'Please enter phone number',
             'phone.digits' => 'Please enter 10 digit number',
-            'phone.unique' => 'Please enter unique phone',
-            'role.required' => 'Please select role'
+            'phone.unique' => 'Please enter unique phone'
         ];
     }
 }
