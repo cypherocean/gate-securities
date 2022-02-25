@@ -28,7 +28,7 @@ Users
         <div class="col-5 align-self-center">
             <div class="customize-input float-right">
                 @canany(['user-create'])
-                <a class="btn waves-effect waves-light btn-rounded btn-outline-primary pull-right" href="{{ route('user.create') }}">Add New</a>
+                    <a class="btn waves-effect waves-light btn-rounded btn-outline-primary pull-right" href="{{ route('user.create') }}">Add New</a>
                 @endcanany
             </div>
         </div>
@@ -46,7 +46,6 @@ Users
                                 <th>Name</th>
                                 <th>Role</th>
                                 <th>Phone</th>
-                                <th>Email</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -113,10 +112,6 @@ Users
                                     {
                                         data: 'phone',
                                         name: 'phone'
-                                    },
-                                    {
-                                        data: 'email',
-                                        name: 'email'
                                     },
                                     {
                                         data: 'status',

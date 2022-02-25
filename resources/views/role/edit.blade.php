@@ -63,7 +63,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group ml-3">
                             <button type="submit" class="btn waves-effect waves-light btn-rounded btn-outline-primary">Submit</button>
                             <a href="{{ route('role') }}" class="btn waves-effect waves-light btn-rounded btn-outline-secondary">Cancel</a>
                         </div>

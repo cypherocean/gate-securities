@@ -36,7 +36,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                <form action="{{ route('access.update') }}" name="form" id="form" method="post">
+                    <form action="{{ route('access.update') }}" name="form" id="form" method="post">
                         @csrf
                         @method('PATCH')
 

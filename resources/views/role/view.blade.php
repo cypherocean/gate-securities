@@ -58,8 +58,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                            <a href="{{ route('role') }}" class="btn waves-effect waves-light btn-rounded btn-outline-secondary">Back</a>
+                    <div class="form-group ml-3">
+                        <a href="{{ route('role') }}" class="btn waves-effect waves-light btn-rounded btn-outline-secondary">Back</a>
                     </div>
                 </div>
             </div>

@@ -36,7 +36,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                <form action="{{ route('permission.update') }}" name="form" id="form" method="post">
+                    <form action="{{ route('permission.update') }}" name="form" id="form" method="post">
                         @csrf
                         @method('PATCH')
                         <input type="hidden" name="id" value="{{ $data->id }}">

@@ -144,14 +144,12 @@
                                     <input type="hidden" name="tab" value="logo">
                                     @if(isset($logo) && $sms->isNotEmpty())
                                         @foreach($logo as $row)
-                                        <div class="form-group col-sm-6">
+                                        <div class="form-group col-sm-12">
                                             <label><b>{{ strtoupper(str_replace('_', ' ', $row->key)) }}</b></label>
                                             <input type="file" class="form-control dropify" id="{{ $row->key }}" name="{{ $row->key }}" data-default-file="{{ url('uploads/logo').'/'.$row->value ?? '' }}" data-show-remove="false" data-height="200" data-max-file-size="3M" data-show-errors="true" data-allowed-file-extensions="jpg png jpeg JPG PNG JPEG" data-max-file-size-preview="3M" />
                                             <span class="kt-form__help error {{ $row->key }}"></span>
                                         </div>
                                         @endforeach
-                                        <div class="form-group col-sm-6">
-                                        </div>
                                     @endif
                                     <input type="submit" value="Save" class="btn waves-effect waves-light btn-rounded btn-outline-primary mb-3">
                                 </div>
