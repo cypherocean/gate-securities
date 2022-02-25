@@ -14,6 +14,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ _fevicon() }}">
     
     <link href="{{ asset('assets/dist/css/style.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/extra-libs/toastr/toastr.min.css') }}" rel="stylesheet" />
 
     @yield('styles')
 </head>
